@@ -13,15 +13,11 @@ var level_size = 50
 var generated_platform_count = 0
 
 var player: Player = null
-var camera: Camera2D = null
 
 
-func setup(_player:Player, _camera:Camera2D):
+func setup(_player:Player):
 	if _player:
 		player = _player
-	
-	if _camera:
-		camera = _camera
 
 
 func _ready():
@@ -45,8 +41,6 @@ func _process(delta):
 	
 		if py <= threshold:
 			gernerate_level(level_end_pos)
-	
-	delete_old_platforms()
 
 
 func create_platform(location: Vector2):
@@ -54,12 +48,6 @@ func create_platform(location: Vector2):
 	platform.global_position = location
 	platform_parent.add_child(platform)
 	return platform
-
-
-func delete_old_platforms():
-	for i in platform_parent.get_children():
-		if get_node(i.get_path()).position.y > camera.get_screen_center_position().y + (viewport_size.y/2):
-			i.queue_free()
 
 
 func generate_ground():

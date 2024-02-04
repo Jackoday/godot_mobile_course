@@ -9,14 +9,17 @@ var terminal_velocity = 1000
 var jump_velocity = -800
 var viewport_size
 
+
 func _ready():
 	viewport_size = get_viewport_rect().size
+
 
 func _process(delta):
 	if velocity.y > 0 and ap.current_animation != "fall":
 		ap.play("fall")
 	elif velocity.y < 0 and ap.current_animation != "jump":
 		ap.play("jump")
+
 
 func _physics_process(delta):
 	velocity.y += gravity
@@ -36,6 +39,7 @@ func _physics_process(delta):
 		global_position.x = -margin
 	elif global_position.x < -margin:
 		global_position.x = viewport_size.x + margin
+
 
 func jump():
 	velocity.y = jump_velocity

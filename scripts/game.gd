@@ -13,8 +13,8 @@ func _ready():
 	camera.setup_camera($Player)
 	add_child(camera)
 	
-	if (player && camera):
-		level_generator.setup(player, camera)
+	if (player):
+		level_generator.setup(player)
 
 
 func _process(delta):
