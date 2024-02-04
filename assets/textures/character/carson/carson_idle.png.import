@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgf14x6xqaao2"
-path="res://.godot/imported/Skin1Idle.png-78b748480f4763a6f0750d4db7212065.ctex"
+uid="uid://cxwpo2ok0samx"
+path="res://.godot/imported/carson_idle.png-1acc118e14aa0ecd82c0a9f8c5016b39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/character/Skin1Idle.png"
-dest_files=["res://.godot/imported/Skin1Idle.png-78b748480f4763a6f0750d4db7212065.ctex"]
+source_file="res://assets/textures/character/carson/carson_idle.png"
+dest_files=["res://.godot/imported/carson_idle.png-1acc118e14aa0ecd82c0a9f8c5016b39.ctex"]
 
 [params]
 

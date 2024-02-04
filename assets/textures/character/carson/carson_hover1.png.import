@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nisk7k5knpqa"
-path="res://.godot/imported/Skin2Idle.png-6410a714489d3d768e049c4f25609613.ctex"
+uid="uid://cg4k70d1hs23d"
+path="res://.godot/imported/carson_hover1.png-c688fe46bacb94f39ce7749e1cb3b845.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/character/Skin2Idle.png"
-dest_files=["res://.godot/imported/Skin2Idle.png-6410a714489d3d768e049c4f25609613.ctex"]
+source_file="res://assets/textures/character/carson/carson_hover1.png"
+dest_files=["res://.godot/imported/carson_hover1.png-c688fe46bacb94f39ce7749e1cb3b845.ctex"]
 
 [params]
 

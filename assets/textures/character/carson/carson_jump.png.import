@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkke74mm1b4qb"
-path="res://.godot/imported/Skin2Jump.png-1dc2043da43b3f241f99c4089912ecb8.ctex"
+uid="uid://bn46omlvgxtdw"
+path="res://.godot/imported/carson_jump.png-9c3d7859879828bf81dc7bb8fd85fde3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/character/Skin2Jump.png"
-dest_files=["res://.godot/imported/Skin2Jump.png-1dc2043da43b3f241f99c4089912ecb8.ctex"]
+source_file="res://assets/textures/character/carson/carson_jump.png"
+dest_files=["res://.godot/imported/carson_jump.png-9c3d7859879828bf81dc7bb8fd85fde3.ctex"]
 
 [params]
 

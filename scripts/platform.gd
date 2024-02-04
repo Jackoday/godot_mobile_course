@@ -7,3 +7,6 @@ func _on_body_entered(body):
 
 func getWidth():
 	return $CollisionShape2D.shape.extents.x * 2
+
+func getHeight():
+	return $Sprite2D.texture.get_height()
