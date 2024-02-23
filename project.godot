@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GodotMobileCourse"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameUtility="*res://scripts/utility.gd"
 
 [display]
 
@@ -57,3 +61,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

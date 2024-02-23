@@ -4,7 +4,7 @@ extends Camera2D
 @onready var destoyer_shape = $Destroyer/CollisionShape2D
 
 var player: Player = null
-var viewport_size
+var viewport_size: Vector2
 var overlapping_areas
 
 
@@ -12,9 +12,9 @@ func _ready():
 	viewport_size = get_viewport_rect().size
 	global_position.x = viewport_size.x / 2
 	
-	limit_bottom = viewport_size.y
+	limit_bottom = int(viewport_size.y)
 	limit_left = 0
-	limit_right = viewport_size.x
+	limit_right = int(viewport_size.x)
 	
 	destroyer.position.y = limit_bottom
 	
@@ -24,11 +24,11 @@ func _ready():
 	destoyer_shape.shape = rect_shape
 
 
-func _process(delta):
+func _process(_delta):
 	if player:
 		var limit_distance = 420
 		if limit_bottom > player.global_position.y + limit_distance:
-			limit_bottom = player.global_position.y + limit_distance
+			limit_bottom = int(player.global_position.y + limit_distance)
 		
 		# Delete platform below camera
 		overlapping_areas = destroyer.get_overlapping_areas()
@@ -38,7 +38,7 @@ func _process(delta):
 					area.queue_free()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player:
 		global_position.y = player.global_position.y
 

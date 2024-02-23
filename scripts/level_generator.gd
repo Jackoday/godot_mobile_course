@@ -4,7 +4,7 @@ extends Node2D
 
 var platform_scene = preload("res://scenes/platform.tscn")
 
-var viewport_size
+var viewport_size: Vector2
 var platform_width
 var platform_height
 var start_platform_y
@@ -33,7 +33,7 @@ func _ready():
 	gernerate_level(start_platform_y)
 
 
-func _process(delta):
+func _process(_delta):
 	if player:
 		var py = player.global_position.y
 		var level_end_pos = start_platform_y - (generated_platform_count * y_distance_between_platforms)
@@ -60,7 +60,7 @@ func generate_ground():
 
 func gernerate_level(start_y: float):
 	for i in range(level_size):
-		var location: Vector2
+		var location: Vector2 = Vector2.ZERO
 		location.x = randf_range(0, viewport_size.x - platform_width)
 		location.y = start_y - (y_distance_between_platforms * i)
 		generated_platform_count += 1
