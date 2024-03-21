@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk3l5w08llgkb"]
+[gd_scene load_steps=10 format=3 uid="uid://dk3l5w08llgkb"]
 
 [ext_resource type="Script" path="res://scripts/base_screen.gd" id="1_d0ufq"]
 [ext_resource type="Texture2D" uid="uid://bowmn726fellm" path="res://assets/textures/ui/BigLogo.png" id="1_p6l3l"]
 [ext_resource type="PackedScene" uid="uid://c7xvjsq02w8d" path="res://scenes/screen_button.tscn" id="2_rx5kd"]
 [ext_resource type="Texture2D" uid="uid://dcovbtu3qecey" path="res://assets/textures/ui/PlayBtn.png" id="3_jyg7i"]
+[ext_resource type="Texture2D" uid="uid://4mpbima5od45" path="res://assets/textures/ui/Box02.png" id="5_r2jhy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eg8ii"]
+font_size = 25
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_2kjq3"]
 length = 0.001
@@ -98,6 +103,39 @@ grow_vertical = 2
 texture_normal = ExtResource("3_jyg7i")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="TitleCharacterSelect" parent="Anchor" instance=ExtResource("2_rx5kd")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = 304.0
+offset_right = 95.0
+offset_bottom = 368.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_r2jhy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Anchor/TitleCharacterSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shop"
+label_settings = SubResource("LabelSettings_eg8ii")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "animate_play_button"

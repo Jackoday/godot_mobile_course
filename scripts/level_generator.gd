@@ -26,10 +26,11 @@ func _ready():
 	platform_width = platform_scene.instantiate().getWidth() + 2 #gap between
 	platform_height = platform_scene.instantiate().getHeight()
 	
-	generate_ground()
-	
 	# Generate the rest of the level
 	start_platform_y = viewport_size.y - (y_distance_between_platforms * 2)
+
+
+func start_generation():
 	gernerate_level(start_platform_y)
 
 
@@ -65,3 +66,9 @@ func gernerate_level(start_y: float):
 		location.y = start_y - (y_distance_between_platforms * i)
 		generated_platform_count += 1
 		create_platform(location)
+
+
+func reset_level():
+	generated_platform_count = 0
+	for platform in platform_parent.get_children():
+		platform.queue_free()

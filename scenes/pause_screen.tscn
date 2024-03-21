@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2lesp87ry3k6" path="res://assets/textures/ui/Closebtn2.png" id="6_837iy"]
 
 [node name="PauseScreen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

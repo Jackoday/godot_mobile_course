@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://cm32q7r50c1ph"]
+
+[ext_resource type="Script" path="res://scripts/base_screen.gd" id="1_r3rgo"]
+[ext_resource type="Texture2D" uid="uid://ddjx85dsuigpe" path="res://assets/textures/ui/Box01.png" id="2_og4gl"]
+[ext_resource type="PackedScene" uid="uid://c7xvjsq02w8d" path="res://scenes/screen_button.tscn" id="3_4f20x"]
+[ext_resource type="Texture2D" uid="uid://c2lesp87ry3k6" path="res://assets/textures/ui/Closebtn2.png" id="4_hnpgp"]
+[ext_resource type="Texture2D" uid="uid://bvg7hwcxnxept" path="res://assets/textures/ui/Box04.png" id="5_81f0a"]
+[ext_resource type="Texture2D" uid="uid://dk7wwvbuq26aq" path="res://assets/textures/character/nathan/nathan_idle.png" id="6_uiuqp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lah5m"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3td02"]
+font_size = 23
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[node name="CharacterScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3rgo")
+
+[node name="Box" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -365.5
+offset_right = 243.5
+offset_bottom = 365.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_og4gl")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Box"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_top = 71.0
+offset_right = 60.5
+offset_bottom = 143.0
+grow_horizontal = 2
+text = "Shop"
+label_settings = SubResource("LabelSettings_lah5m")
+
+[node name="CharacterBack" parent="Box" instance=ExtResource("3_4f20x")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 50.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_hnpgp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SelectNathan" parent="Box" instance=ExtResource("3_4f20x")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -124.5
+offset_right = 136.5
+offset_bottom = 174.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_81f0a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Box/SelectNathan"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -148.5
+offset_right = 122.5
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_uiuqp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Box/SelectNathan"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -52.0
+offset_right = 93.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Manager Nathan"
+label_settings = SubResource("LabelSettings_3td02")

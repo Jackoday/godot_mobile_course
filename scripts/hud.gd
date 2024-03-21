@@ -1,7 +1,10 @@
 extends Control
 
+signal pause_game
+
 @onready var topbar = $TopBar
 @onready var topbar_background = $TopBarBackground
+@onready var score_label = $TopBar/ScoreLabel
 
 
 func _ready():
@@ -21,5 +24,10 @@ func _ready():
 		GameUtility.add_log_msg("Top bar position: " + str(topbar.position))
 
 
+func set_score(score: int):
+	score_label.text = str(score)
+
+
 func _on_pause_button_pressed():
-	pass # Replace with function body.
+	SoundFX.play("Click")
+	pause_game.emit()

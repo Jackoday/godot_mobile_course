@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cav7vtxq7o8wu"]
+[gd_scene load_steps=16 format=3 uid="uid://cav7vtxq7o8wu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_teiut"]
 [ext_resource type="Texture2D" uid="uid://cxwpo2ok0samx" path="res://assets/textures/character/carson/carson_idle.png" id="2_6du31"]
 [ext_resource type="Texture2D" uid="uid://cg4k70d1hs23d" path="res://assets/textures/character/carson/carson_hover1.png" id="2_rhs7q"]
 [ext_resource type="Texture2D" uid="uid://bn46omlvgxtdw" path="res://assets/textures/character/carson/carson_jump.png" id="3_p0pw0"]
 [ext_resource type="Texture2D" uid="uid://byg8bnjk3jxib" path="res://assets/textures/character/carson/carson_hover2.png" id="3_tibby"]
+[ext_resource type="Texture2D" uid="uid://b8pqual8nq1fl" path="res://assets/textures/character/nathan/nathan_hover2.png" id="6_8e1mw"]
+[ext_resource type="Texture2D" uid="uid://f8ae5c7vh828" path="res://assets/textures/character/nathan/nathan_hover1.png" id="7_86gfi"]
+[ext_resource type="Texture2D" uid="uid://w5ivgr3b18fv" path="res://assets/textures/character/nathan/nathan_jump.png" id="8_h2u7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iokj2"]
 size = Vector2(46, 25)
@@ -50,7 +53,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_p6wvp"]
 resource_name = "fall"
-length = 0.5
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -59,10 +62,50 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_tibby"), ExtResource("2_rhs7q"), ExtResource("3_tibby"), ExtResource("2_rhs7q"), ExtResource("3_tibby"), ExtResource("2_rhs7q")]
+"values": [ExtResource("3_tibby"), ExtResource("2_rhs7q"), ExtResource("3_tibby"), ExtResource("2_rhs7q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.55271e-15, -47)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+
+[sub_resource type="Animation" id="Animation_onx6x"]
+resource_name = "fall_nathan"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_8e1mw"), ExtResource("7_86gfi"), ExtResource("6_8e1mw"), ExtResource("7_86gfi")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -128,11 +171,52 @@ tracks/2/keys = {
 "values": [Vector2(0.35, 0.35)]
 }
 
+[sub_resource type="Animation" id="Animation_v30ol"]
+resource_name = "jump_nathan"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_h2u7l")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.96046e-08, -47)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ttfua"]
 _data = {
 "RESET": SubResource("Animation_nwfa7"),
 "fall": SubResource("Animation_p6wvp"),
-"jump": SubResource("Animation_82n2j")
+"fall_nathan": SubResource("Animation_onx6x"),
+"jump": SubResource("Animation_82n2j"),
+"jump_nathan": SubResource("Animation_v30ol")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -152,3 +236,9 @@ shape = SubResource("RectangleShape2D_iokj2")
 libraries = {
 "": SubResource("AnimationLibrary_ttfua")
 }
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -4.5)
+scale = Vector2(2.3, 1.05)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

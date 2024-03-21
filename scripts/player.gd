@@ -1,7 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+signal died
+
 @onready var ap = $AnimationPlayer
+@onready var cshape = $CollisionShape2D
+@onready var sprite = $Sprite2D
 
 var speed = 300.0
 var accelerometer_speed = 130
@@ -13,6 +17,11 @@ var viewport_size: Vector2
 
 var use_accelerometer = false
 
+var dead = false
+
+var fall_animation = "fall"
+var jump_animation = "jump"
+
 
 func _ready():
 	viewport_size = get_viewport_rect().size
@@ -23,10 +32,10 @@ func _ready():
 
 
 func _process(_delta):
-	if velocity.y > 0 and ap.current_animation != "fall":
-		ap.play("fall")
-	elif velocity.y < 0 and ap.current_animation != "jump":
-		ap.play("jump")
+	if velocity.y > 0 and ap.current_animation != fall_animation:
+		ap.play(fall_animation)
+	elif velocity.y < 0 and ap.current_animation != jump_animation:
+		ap.play(jump_animation)
 
 
 func _physics_process(_delta):
@@ -34,17 +43,18 @@ func _physics_process(_delta):
 	if velocity.y > terminal_velocity:
 		velocity.y = terminal_velocity
 	
-	if use_accelerometer:
-		var mobile_input = Input.get_accelerometer()
-		velocity.x = mobile_input.x * accelerometer_speed
-		
-	else:
-		var direction = Input.get_axis("move_left", "move_right")
-		if direction:
-			velocity.x = direction * speed
+	if !dead:
+		if use_accelerometer:
+			var mobile_input = Input.get_accelerometer()
+			velocity.x = mobile_input.x * accelerometer_speed
+			
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
-	
+			var direction = Input.get_axis("move_left", "move_right")
+			if direction:
+				velocity.x = direction * speed
+			else:
+				velocity.x = move_toward(velocity.x, 0, speed)
+		
 	move_and_slide()
 	
 	var margin = 20
@@ -55,4 +65,25 @@ func _physics_process(_delta):
 
 
 func jump():
+	SoundFX.play("Jump")
 	velocity.y = jump_velocity
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	die()
+
+
+func die():
+	if !dead:
+		SoundFX.play("Fall")
+		dead = true
+		cshape.set_deferred("disabled", true)
+		died.emit()
+
+func use_skin(skin: int):
+	match skin:
+		1: #Nathan
+			fall_animation = "fall_nathan"
+			jump_animation = "jump_nathan"
+			if sprite:
+				sprite.texture = preload("res://assets/textures/character/nathan/nathan_idle.png")
