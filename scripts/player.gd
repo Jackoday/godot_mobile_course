@@ -6,6 +6,11 @@ signal died
 @onready var ap = $AnimationPlayer
 @onready var cshape = $CollisionShape2D
 @onready var sprite = $Sprite2D
+@onready var projectile_start = $ProjectileStart
+
+
+var projectile = preload("res://scenes/projectile.tscn")
+var parent: Node2D
 
 var speed = 300.0
 var accelerometer_speed = 130
@@ -25,6 +30,7 @@ var jump_animation = "jump"
 
 func _ready():
 	viewport_size = get_viewport_rect().size
+	parent = get_parent()
 	
 	var os = OS.get_name()
 	if os == "Android" || os == "iOS":
@@ -67,6 +73,13 @@ func _physics_process(_delta):
 func jump():
 	SoundFX.play("Jump")
 	velocity.y = jump_velocity
+	shoot()#remove me
+
+
+func shoot():
+	var ball = projectile.instantiate()
+	parent.add_child(ball)
+	ball.transform = projectile_start.global_transform
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
