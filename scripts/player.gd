@@ -7,6 +7,7 @@ signal died
 @onready var cshape = $CollisionShape2D
 @onready var sprite = $Sprite2D
 @onready var projectile_start = $ProjectileStart
+@onready var swipe = $SwipeDetector
 
 
 var projectile = preload("res://scenes/projectile.tscn")
@@ -35,6 +36,8 @@ func _ready():
 	var os = OS.get_name()
 	if os == "Android" || os == "iOS":
 		use_accelerometer = true
+	
+	swipe.connect("swiped", _shoot)
 
 
 func _process(_delta):
@@ -73,10 +76,10 @@ func _physics_process(_delta):
 func jump():
 	SoundFX.play("Jump")
 	velocity.y = jump_velocity
-	shoot()#remove me
 
 
-func shoot():
+func _shoot(direction):
+	projectile_start.rotation = direction.angle()
 	var ball = projectile.instantiate()
 	parent.add_child(ball)
 	ball.transform = projectile_start.global_transform

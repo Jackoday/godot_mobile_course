@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b85x6cywfyfy8"]
+
+[ext_resource type="Script" path="res://scripts/swipe_detector.gd" id="1_buxth"]
+
+[node name="SwipeDetector" type="Node"]
+script = ExtResource("1_buxth")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

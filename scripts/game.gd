@@ -12,6 +12,7 @@ signal pause_game
 
 @onready var hud = $UILayer/HUD
 
+
 var player_scene = preload("res://scenes/player.tscn")
 var player: Player = null
 var player_spawn_position: Vector2

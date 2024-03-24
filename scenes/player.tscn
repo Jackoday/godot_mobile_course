@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cav7vtxq7o8wu"]
+[gd_scene load_steps=17 format=3 uid="uid://cav7vtxq7o8wu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_teiut"]
 [ext_resource type="Texture2D" uid="uid://cxwpo2ok0samx" path="res://assets/textures/character/carson/carson_idle.png" id="2_6du31"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b8pqual8nq1fl" path="res://assets/textures/character/nathan/nathan_hover2.png" id="6_8e1mw"]
 [ext_resource type="Texture2D" uid="uid://f8ae5c7vh828" path="res://assets/textures/character/nathan/nathan_hover1.png" id="7_86gfi"]
 [ext_resource type="Texture2D" uid="uid://w5ivgr3b18fv" path="res://assets/textures/character/nathan/nathan_jump.png" id="8_h2u7l"]
+[ext_resource type="PackedScene" uid="uid://b85x6cywfyfy8" path="res://scenes/swipe_detector.tscn" id="9_y5k1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iokj2"]
 size = Vector2(46, 25)
@@ -244,5 +245,7 @@ scale = Vector2(2.3, 1.05)
 [node name="ProjectileStart" type="Marker2D" parent="."]
 position = Vector2(0, -83)
 rotation = -1.5708
+
+[node name="SwipeDetector" parent="." instance=ExtResource("9_y5k1f")]
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

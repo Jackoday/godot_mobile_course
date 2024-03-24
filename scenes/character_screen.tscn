@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c2lesp87ry3k6" path="res://assets/textures/ui/Closebtn2.png" id="4_hnpgp"]
 [ext_resource type="Texture2D" uid="uid://bvg7hwcxnxept" path="res://assets/textures/ui/Box04.png" id="5_81f0a"]
 [ext_resource type="Texture2D" uid="uid://cxwpo2ok0samx" path="res://assets/textures/character/carson/carson_idle.png" id="6_ir8km"]
-[ext_resource type="Texture2D" uid="uid://dk7wwvbuq26aq" path="res://assets/textures/character/nathan/nathan_idle.png" id="6_uiuqp"]
+[ext_resource type="Texture2D" uid="uid://b8rha5yi8lfau" path="res://assets/textures/character/nathan/nathan_idle.png" id="7_vvqgw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lah5m"]
-font_size = 50
+font_size = 40
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3td02"]
@@ -52,7 +52,7 @@ offset_top = 71.0
 offset_right = 60.5
 offset_bottom = 143.0
 grow_horizontal = 2
-text = "Shop"
+text = "Select Character"
 label_settings = SubResource("LabelSettings_lah5m")
 
 [node name="CharacterBack" parent="Box" instance=ExtResource("3_4f20x")]
@@ -152,7 +152,7 @@ offset_right = 122.5
 offset_bottom = 140.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_uiuqp")
+texture = ExtResource("7_vvqgw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Box/ScrollContainer/HBoxContainer/SelectNathan"]
