@@ -244,7 +244,6 @@ scale = Vector2(2.3, 1.05)
 
 [node name="ProjectileStart" type="Marker2D" parent="."]
 position = Vector2(0, -83)
-rotation = -1.5708
 
 [node name="SwipeDetector" parent="." instance=ExtResource("9_y5k1f")]
 

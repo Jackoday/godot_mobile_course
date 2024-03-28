@@ -78,11 +78,11 @@ func jump():
 	velocity.y = jump_velocity
 
 
-func _shoot(direction):
+func _shoot(direction: Vector2):
 	projectile_start.rotation = direction.angle()
 	var ball = projectile.instantiate()
-	parent.add_child(ball)
 	ball.transform = projectile_start.global_transform
+	parent.add_child(ball)
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

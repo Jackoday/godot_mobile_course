@@ -1,20 +1,29 @@
-extends Node2D
+extends RigidBody2D
 
-var speed = 300
-var accelerometer_speed = 130
+@onready var timer: Timer = $Timer
 
 var gravity = 15.0
-var terminal_velocity = 1000
-var jump_velocity = -800
+var terminal_velocity = 600
+var initial_velocity = 900
 
 
 func _ready():
-	pass
+	apply_central_impulse(Vector2(initial_velocity, 0).rotated(rotation))
+	timer.start()
 
 
 func _process(_delta):
 	pass
 
 
-func _physics_process(delta):
-	position += transform.x * speed * delta
+func _physics_process(_delta):
+	pass
+
+
+func _integrate_forces(_state):
+	if linear_velocity.y > terminal_velocity:
+		linear_velocity.y = terminal_velocity
+
+
+func _on_timer_timeout():
+	queue_free()

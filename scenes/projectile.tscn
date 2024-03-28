@@ -1,11 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvwa2g7a2wj44"]
+[gd_scene load_steps=7 format=3 uid="uid://dvwa2g7a2wj44"]
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_q4xla"]
 [ext_resource type="Texture2D" uid="uid://b4scemw3namuk" path="res://assets/textures/bg/ball.png" id="2_t1kn1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fac5"]
 
-[node name="Projectile" type="Area2D"]
+[sub_resource type="Animation" id="Animation_alkmo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dstfx"]
+resource_name = "ball_rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yk65f"]
+_data = {
+"RESET": SubResource("Animation_alkmo"),
+"ball_rotate": SubResource("Animation_dstfx")
+}
+
+[node name="Projectile" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_q4xla")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -15,3 +55,15 @@ shape = SubResource("CircleShape2D_1fac5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_t1kn1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+autoplay = "ball_rotate"
+libraries = {
+"": SubResource("AnimationLibrary_yk65f")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

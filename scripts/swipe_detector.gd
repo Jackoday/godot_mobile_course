@@ -1,11 +1,11 @@
 extends Node
 
-signal swiped(direction)
-signal swipe_canceled(start_position)
+signal swiped(position: Vector2)
 
 @onready var timer = $Timer
 
 var swipe_start_poition = Vector2()
+var min_distance = 30
 
 func _input(event):
 	if not event is InputEventScreenTouch:
@@ -16,16 +16,13 @@ func _input(event):
 		_end_detection(event.position)
 
 
-func _start_detection(position):
+func _start_detection(position: Vector2):
 	swipe_start_poition = position
 	timer.start()
 
 
-func _end_detection(position):
+func _end_detection(position: Vector2):
 	timer.stop()
 	var direction = (position - swipe_start_poition).normalized()
-	emit_signal("swiped", direction)
-
-
-func _on_timer_timeout():
-	emit_signal('swipe_canceled', swipe_start_poition)
+	if swipe_start_poition.distance_to(position) > min_distance && direction.y < 0:
+		emit_signal("swiped", direction)
