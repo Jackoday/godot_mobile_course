@@ -8,9 +8,11 @@ var viewport_size: Vector2
 var platform_width
 var platform_height
 var start_platform_y
-var y_distance_between_platforms = 100
-var level_size = 50
-var generated_platform_count = 0
+var y_distance_between_platforms: int
+var max_y_distance_between_platforms = 300
+var level_size = 40
+var generated_platform_count: int
+var level_end_pos: int
 
 var player: Player = null
 
@@ -25,30 +27,45 @@ func _ready():
 	viewport_size = get_viewport_rect().size
 	platform_width = platform_scene.instantiate().getWidth() + 2 #gap between
 	platform_height = platform_scene.instantiate().getHeight()
-	
-	# Generate the rest of the level
-	start_platform_y = viewport_size.y - (y_distance_between_platforms * 2)
 
 
 func start_generation():
-	gernerate_level(start_platform_y)
+	gernerate_level(viewport_size.y - (y_distance_between_platforms * 2))
 
 
 func _process(_delta):
 	if player:
 		var py = player.global_position.y
-		var level_end_pos = start_platform_y - (generated_platform_count * y_distance_between_platforms)
 		var threshold = level_end_pos + viewport_size.y
 	
 		if py <= threshold:
-			gernerate_level(level_end_pos)
+			GameUtility.add_log_msg(str(y_distance_between_platforms))
+			gernerate_level(level_end_pos - y_distance_between_platforms)
+			y_distance_between_platforms += 15
+			if y_distance_between_platforms > max_y_distance_between_platforms:
+				y_distance_between_platforms = max_y_distance_between_platforms
 
 
 func create_platform(location: Vector2):
 	var platform = platform_scene.instantiate()
 	platform.global_position = location
 	platform_parent.add_child(platform)
+	level_end_pos = platform.global_position.y
+	if level_end_pos < 300: #about first 5 platforms will not get events
+		add_event(platform)
 	return platform
+
+
+func add_event(platform):
+	platform.moving = true
+
+
+func create_enemy(location: Vector2):
+	pass
+
+
+func create_goal(location: Vector2):
+	pass
 
 
 func generate_ground():
@@ -70,5 +87,6 @@ func gernerate_level(start_y: float):
 
 func reset_level():
 	generated_platform_count = 0
+	y_distance_between_platforms = 100
 	for platform in platform_parent.get_children():
 		platform.queue_free()
