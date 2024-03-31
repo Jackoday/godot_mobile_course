@@ -13,6 +13,7 @@ var max_y_distance_between_platforms = 300
 var level_size = 40
 var generated_platform_count: int
 var level_end_pos: int
+var event_odds: int
 
 var player: Player = null
 
@@ -39,25 +40,54 @@ func _process(_delta):
 		var threshold = level_end_pos + viewport_size.y
 	
 		if py <= threshold:
-			GameUtility.add_log_msg(str(y_distance_between_platforms))
 			gernerate_level(level_end_pos - y_distance_between_platforms)
 			y_distance_between_platforms += 15
 			if y_distance_between_platforms > max_y_distance_between_platforms:
 				y_distance_between_platforms = max_y_distance_between_platforms
 
 
-func create_platform(location: Vector2):
+func create_platform(location: Vector2, event: bool):
 	var platform = platform_scene.instantiate()
 	platform.global_position = location
 	platform_parent.add_child(platform)
 	level_end_pos = platform.global_position.y
-	if level_end_pos < 300: #about first 5 platforms will not get events
+	if event: #about first 5 platforms will not get events
 		add_event(platform)
 	return platform
 
 
 func add_event(platform):
-	platform.moving = true
+	var odds: int 
+	
+	odds = randi_range(20,200)
+	if event_odds > odds:
+		var new_platform_position = platform.global_position
+		new_platform_position.x = randf_range(0, viewport_size.x - platform_width)
+		new_platform_position.y += y_distance_between_platforms/2
+		create_platform(new_platform_position, false)
+	
+	odds = randi_range(1,100)
+	if event_odds > odds:
+		platform.moving = true
+	odds = randi_range(1,100)
+	if event_odds > odds:
+		platform.vanish = true
+	if platform.moving && platform.vanish:
+		return
+	
+	odds = randi_range(1,100)
+	if (event_odds/2) > odds:
+		var pick = randi_range(1,3)
+		match pick:
+			1:
+				create_enemy(platform.global_position)
+				GameUtility.add_log_msg("create_enemy")
+			2:
+				create_goal(platform.global_position)
+				GameUtility.add_log_msg("create_goal")
+			3:
+				create_boost(platform.global_position)
+				GameUtility.add_log_msg("create_boost")
 
 
 func create_enemy(location: Vector2):
@@ -68,12 +98,16 @@ func create_goal(location: Vector2):
 	pass
 
 
+func create_boost(location: Vector2):
+	pass
+
+
 func generate_ground():
 	var y_position = viewport_size.y - platform_height + 10
 	var ground_layer_platform_count = (viewport_size.x / platform_width) + 1
 	
 	for i in range(ground_layer_platform_count):
-		create_platform(Vector2(i * platform_width, y_position))
+		create_platform(Vector2(i * platform_width, y_position), false)
 
 
 func gernerate_level(start_y: float):
@@ -82,11 +116,15 @@ func gernerate_level(start_y: float):
 		location.x = randf_range(0, viewport_size.x - platform_width)
 		location.y = start_y - (y_distance_between_platforms * i)
 		generated_platform_count += 1
-		create_platform(location)
+		create_platform(location, level_end_pos < 300)
+	event_odds += 7
+	if event_odds > 50:
+		event_odds = 50
 
 
 func reset_level():
 	generated_platform_count = 0
 	y_distance_between_platforms = 100
+	event_odds = 5
 	for platform in platform_parent.get_children():
 		platform.queue_free()
