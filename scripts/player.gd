@@ -4,7 +4,8 @@ class_name Player
 signal died
 
 @onready var ap = $AnimationPlayer
-@onready var cshape = $CollisionShape2D
+@onready var jump_cshape = $JumpCollisionShape2D
+@onready var standard_cshape = $StandardCollisionShape2D
 @onready var sprite = $Sprite2D
 @onready var projectile_start = $ProjectileStart
 @onready var swipe = $SwipeDetector
@@ -19,7 +20,10 @@ var accelerometer_speed = 130
 var gravity = 15.0
 var terminal_velocity = 1000
 var jump_velocity = -800
+var boost_jump_velocity = -1200
 var viewport_size: Vector2
+
+var boost_jumps: int = 0
 
 var use_accelerometer = false
 
@@ -74,8 +78,17 @@ func _physics_process(_delta):
 
 
 func jump():
-	SoundFX.play("Jump")
-	velocity.y = jump_velocity
+	if boost_jumps > 0:
+		SoundFX.play("Fart")
+		velocity.y = boost_jump_velocity
+		boost_jumps -= 1
+	else:
+		SoundFX.play("Jump")
+		velocity.y = jump_velocity
+
+
+func apply_boost_jumps():
+	boost_jumps = 4
 
 
 func _shoot(direction: Vector2):
@@ -93,7 +106,8 @@ func die():
 	if !dead:
 		SoundFX.play("Fall")
 		dead = true
-		cshape.set_deferred("disabled", true)
+		jump_cshape.set_deferred("disabled", true)
+		standard_cshape.set_deferred("disabled", true)
 		died.emit()
 
 func use_skin(skin: int):

@@ -26,10 +26,16 @@ func getWidth():
 func getHeight():
 	return $Sprite2D.texture.get_height()
 
+
+func increase_speed(platform_count: int):
+	speed += float(platform_count/50)
+	if speed > 170:
+		speed = 170
+
 func _physics_process(delta):
 	if moving:
 		if global_position.x > viewport_size.x - getWidth():
 			velocity.x = -1
 		elif global_position.x < 0:
-			velocity.x = +1
+			velocity.x = 1
 		position += velocity.normalized() * speed * delta

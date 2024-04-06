@@ -5,7 +5,8 @@ extends Node
 var sounds = {
 	"Click": load("res://assets/sound/Click.wav"),
 	"Fall": load("res://assets/sound/Fall.wav"),
-	"Jump": load("res://assets/sound/Jump.wav")
+	"Jump": load("res://assets/sound/Jump.wav"),
+	"Fart": load("res://assets/sound/Fart.wav")
 }
 
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmmiacie8yc1t"]
+[gd_scene load_steps=10 format=3 uid="uid://dmmiacie8yc1t"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_nfjbl"]
 [ext_resource type="Texture2D" uid="uid://btv7j6q8sru15" path="res://assets/textures/bg/Ground.png" id="3_40iv3"]
 [ext_resource type="PackedScene" uid="uid://dfkshb04onu0w" path="res://scenes/level_generator.tscn" id="3_gjc5a"]
-[ext_resource type="Texture2D" uid="uid://bcm0xcwgaah0h" path="res://assets/textures/bg/Layer1.png" id="4_sbolk"]
+[ext_resource type="Texture2D" uid="uid://dejy2moyuo5y7" path="res://assets/textures/bg/Layer1_day.png" id="3_m2okw"]
+[ext_resource type="Texture2D" uid="uid://rgloupt1c68l" path="res://assets/textures/bg/Layer1_night.png" id="4_ovnox"]
 [ext_resource type="Texture2D" uid="uid://ca8ilhihrj0oy" path="res://assets/textures/bg/Layer2.png" id="5_ge75n"]
+[ext_resource type="Texture2D" uid="uid://chl1le455eupi" path="res://assets/textures/bg/Layer1_stars.png" id="5_oh047"]
 [ext_resource type="Texture2D" uid="uid://k6xsqdm4n4mg" path="res://assets/textures/bg/Layer3.png" id="6_2fahd"]
 [ext_resource type="PackedScene" uid="uid://dc8membhdg4uf" path="res://scenes/hud.tscn" id="7_jexcf"]
 
@@ -24,7 +26,18 @@ motion_mirroring = Vector2(0, 1935)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(0.675, 0.675)
-texture = ExtResource("4_sbolk")
+texture = ExtResource("3_m2okw")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("4_ovnox")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("5_oh047")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]

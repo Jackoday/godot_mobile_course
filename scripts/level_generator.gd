@@ -3,17 +3,18 @@ extends Node2D
 @onready var platform_parent = $PlatformParent
 
 var platform_scene = preload("res://scenes/platform.tscn")
+var boost_item_scene = preload("res://scenes/boost_item.tscn")
 
 var viewport_size: Vector2
 var platform_width
 var platform_height
 var start_platform_y
-var y_distance_between_platforms: int
+var y_distance_between_platforms: int #set in reset_level()
 var max_y_distance_between_platforms = 300
 var level_size = 40
-var generated_platform_count: int
-var level_end_pos: int
-var event_odds: int
+var generated_platform_count: int #set in reset_level()
+var level_end_pos: int #set when platform is created()
+var event_odds: int #set in reset_level()
 
 var player: Player = null
 
@@ -63,20 +64,19 @@ func add_event(platform):
 	if event_odds > odds:
 		var new_platform_position = platform.global_position
 		new_platform_position.x = randf_range(0, viewport_size.x - platform_width)
-		new_platform_position.y += y_distance_between_platforms/2
+		new_platform_position.y += float(y_distance_between_platforms)/2
 		create_platform(new_platform_position, false)
 	
 	odds = randi_range(1,100)
 	if event_odds > odds:
 		platform.moving = true
+		platform.increase_speed(generated_platform_count)
 	odds = randi_range(1,100)
 	if event_odds > odds:
 		platform.vanish = true
-	if platform.moving && platform.vanish:
-		return
 	
 	odds = randi_range(1,100)
-	if (event_odds/2) > odds:
+	if (float(event_odds)/2) > odds:
 		var pick = randi_range(1,3)
 		match pick:
 			1:
@@ -84,9 +84,11 @@ func add_event(platform):
 				GameUtility.add_log_msg("create_enemy")
 			2:
 				create_goal(platform.global_position)
+				platform.moving = false
 				GameUtility.add_log_msg("create_goal")
 			3:
-				create_boost(platform.global_position)
+				create_boost(platform.get_global_position())
+				platform.moving = false
 				GameUtility.add_log_msg("create_boost")
 
 
@@ -99,7 +101,11 @@ func create_goal(location: Vector2):
 
 
 func create_boost(location: Vector2):
-	pass
+	var boost_item = boost_item_scene.instantiate()
+	boost_item.global_position = location
+	boost_item.position.y -= 30
+	boost_item.position.x += 68
+	platform_parent.add_child(boost_item)
 
 
 func generate_ground():
@@ -111,6 +117,7 @@ func generate_ground():
 
 
 func gernerate_level(start_y: float):
+	GameUtility.add_log_msg("New section created")
 	for i in range(level_size):
 		var location: Vector2 = Vector2.ZERO
 		location.x = randf_range(0, viewport_size.x - platform_width)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cav7vtxq7o8wu"]
+[gd_scene load_steps=18 format=3 uid="uid://cav7vtxq7o8wu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_teiut"]
 [ext_resource type="Texture2D" uid="uid://cxwpo2ok0samx" path="res://assets/textures/character/carson/carson_idle.png" id="2_6du31"]
@@ -12,6 +12,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iokj2"]
 size = Vector2(46, 25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ku3bo"]
+radius = 25.0
+height = 101.0
 
 [sub_resource type="Animation" id="Animation_nwfa7"]
 length = 0.001
@@ -229,9 +233,17 @@ position = Vector2(0, -47)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_6du31")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="JumpCollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_iokj2")
+
+[node name="StandardCollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(0, -51.5)
+shape = SubResource("CapsuleShape2D_ku3bo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

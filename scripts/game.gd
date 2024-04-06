@@ -9,6 +9,9 @@ signal pause_game
 @onready var parallax1 = $ParallaxBackground/ParallaxLayer
 @onready var parallax2 = $ParallaxBackground/ParallaxLayer2
 @onready var parallax3 = $ParallaxBackground/ParallaxLayer3
+@onready var day_background = $ParallaxBackground/ParallaxLayer/Sprite2D
+@onready var night_background = $ParallaxBackground/ParallaxLayer/Sprite2D2
+@onready var stars_background = $ParallaxBackground/ParallaxLayer/Sprite2D3
 
 @onready var hud = $UILayer/HUD
 
@@ -48,6 +51,8 @@ func _ready():
 	hud.visible = false
 	hud.set_score(0)
 	hud.pause_game.connect(_on_hud_pause_game)
+	
+	night_background.self_modulate = Color(1, 1, 1, 1000)
 
 
 func get_parallax_sprite_scale(parallax_sprite: Sprite2D):
@@ -71,6 +76,9 @@ func _process(_delta):
 		if score < viewport_size.y - player.global_position.y:
 			score = int(viewport_size.y - player.global_position.y)
 		hud.set_score(score)
+	
+	night_background.self_modulate = Color(1, 1, 1, float(score)/100000)
+	stars_background.self_modulate = Color(1, 1, 1, float(score)/200000)
 
 
 func new_game():
