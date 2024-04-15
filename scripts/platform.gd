@@ -28,7 +28,7 @@ func getHeight():
 
 
 func increase_speed(platform_count: int):
-	speed += float(platform_count/50)
+	speed += float(platform_count)/50
 	if speed > 170:
 		speed = 170
 

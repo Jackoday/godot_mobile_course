@@ -44,9 +44,19 @@ _data = {
 }
 
 [node name="Projectile" type="RigidBody2D"]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 4
+collision_mask = 4
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_q4xla")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 5
+visibility_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.85, 1.85)
+shape = SubResource("CircleShape2D_1fac5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.85, 1.85)
@@ -66,4 +76,5 @@ libraries = {
 wait_time = 3.0
 one_shot = true
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

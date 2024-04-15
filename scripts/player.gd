@@ -21,6 +21,7 @@ var gravity = 15.0
 var terminal_velocity = 1000
 var jump_velocity = -800
 var boost_jump_velocity = -1200
+var goal_boost_velocity = -2200
 var viewport_size: Vector2
 
 var boost_jumps: int = 0
@@ -96,6 +97,11 @@ func _shoot(direction: Vector2):
 	var ball = projectile.instantiate()
 	ball.transform = projectile_start.global_transform
 	parent.add_child(ball)
+	ball.goal.connect(_on_ball_goal)
+
+
+func _on_ball_goal():
+	velocity.y = goal_boost_velocity
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -109,6 +115,7 @@ func die():
 		jump_cshape.set_deferred("disabled", true)
 		standard_cshape.set_deferred("disabled", true)
 		died.emit()
+
 
 func use_skin(skin: int):
 	match skin:

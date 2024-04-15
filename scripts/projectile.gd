@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @onready var timer: Timer = $Timer
 
+signal goal
+
 var gravity = 15.0
 var terminal_velocity = 600
 var initial_velocity = 900
@@ -27,3 +29,10 @@ func _integrate_forces(_state):
 
 func _on_timer_timeout():
 	queue_free()
+
+
+func _on_area_2d_area_entered(area):
+	if area is Goal:
+		goal.emit()
+		area.queue_free()
+		GameUtility.add_log_msg("Goal")

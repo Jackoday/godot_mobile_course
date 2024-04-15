@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfk5ieglniqn0"]
+
+[ext_resource type="Script" path="res://scripts/goal.gd" id="1_115ry"]
+[ext_resource type="Texture2D" uid="uid://dibbsn4tve1yo" path="res://assets/textures/items/goal.png" id="1_jg4il"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6havi"]
+size = Vector2(107.25, 70)
+
+[node name="Goal" type="Area2D"]
+light_mask = 5
+visibility_layer = 5
+script = ExtResource("1_115ry")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(61.2891, -39.216)
+scale = Vector2(0.125696, 0.122734)
+texture = ExtResource("1_jg4il")
+
+[node name="NetCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(61.375, -36)
+shape = SubResource("RectangleShape2D_6havi")
