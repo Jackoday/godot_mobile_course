@@ -36,3 +36,6 @@ func _on_area_2d_area_entered(area):
 		goal.emit()
 		area.queue_free()
 		GameUtility.add_log_msg("Goal")
+	if area is Enemy:
+		area.queue_free()
+		GameUtility.add_log_msg("Enemy defeated")

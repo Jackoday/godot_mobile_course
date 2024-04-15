@@ -4,6 +4,7 @@ extends Node2D
 
 var platform_scene = preload("res://scenes/platform.tscn")
 var boost_item_scene = preload("res://scenes/boost_item.tscn")
+var enemy_scene = preload("res://scenes/enemy.tscn")
 var goal_scene = preload("res://scenes/goal.tscn")
 
 var viewport_size: Vector2
@@ -94,7 +95,10 @@ func add_event(platform):
 
 
 func create_enemy(location: Vector2):
-	pass
+	var enemy = enemy_scene.instantiate()
+	enemy.global_position = location
+	enemy.position.y -= 30
+	platform_parent.add_child(enemy)
 
 
 func create_goal(location: Vector2):
