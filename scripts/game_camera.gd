@@ -38,7 +38,7 @@ func _process(_delta):
 		overlapping_areas = destroyer.get_overlapping_areas()
 		if overlapping_areas.size() > 0:
 			for area in overlapping_areas:
-				if area is Platform:
+				if area is Platform || Enemy || Goal || Boost:
 					area.queue_free()
 
 

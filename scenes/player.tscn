@@ -259,4 +259,8 @@ position = Vector2(0, -83)
 
 [node name="SwipeDetector" parent="." instance=ExtResource("9_y5k1f")]
 
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

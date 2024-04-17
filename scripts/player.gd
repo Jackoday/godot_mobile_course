@@ -9,6 +9,7 @@ signal died
 @onready var sprite = $Sprite2D
 @onready var projectile_start = $ProjectileStart
 @onready var swipe = $SwipeDetector
+@onready var shoot_timer = $ShootTimer
 
 
 var projectile = preload("res://scenes/projectile.tscn")
@@ -28,6 +29,7 @@ var boost_jumps: int = 0
 
 var use_accelerometer = false
 
+var invincible = false
 var dead = false
 
 var fall_animation = "fall"
@@ -48,6 +50,7 @@ func _ready():
 func _process(_delta):
 	if velocity.y > 0 and ap.current_animation != fall_animation:
 		ap.play(fall_animation)
+		invincible = false
 	elif velocity.y < 0 and ap.current_animation != jump_animation:
 		ap.play(jump_animation)
 
@@ -79,13 +82,14 @@ func _physics_process(_delta):
 
 
 func jump():
-	if boost_jumps > 0:
-		SoundFX.play("Fart")
-		velocity.y = boost_jump_velocity
-		boost_jumps -= 1
-	else:
-		SoundFX.play("Jump")
-		velocity.y = jump_velocity
+	if !dead:
+		if boost_jumps > 0:
+			SoundFX.play("Fart")
+			velocity.y = boost_jump_velocity
+			boost_jumps -= 1
+		else:
+			SoundFX.play("Jump")
+			velocity.y = jump_velocity
 
 
 func apply_boost_jumps():
@@ -93,14 +97,18 @@ func apply_boost_jumps():
 
 
 func _shoot(direction: Vector2):
-	projectile_start.rotation = direction.angle()
-	var ball = projectile.instantiate()
-	ball.transform = projectile_start.global_transform
-	parent.add_child(ball)
-	ball.goal.connect(_on_ball_goal)
+	if !dead and shoot_timer.time_left == 0:
+		shoot_timer.start()
+		projectile_start.rotation = direction.angle()
+		var ball = projectile.instantiate()
+		ball.transform = projectile_start.global_transform
+		parent.add_child(ball)
+		ball.goal.connect(_on_ball_goal)
+		
 
 
 func _on_ball_goal():
+	invincible = true
 	velocity.y = goal_boost_velocity
 
 

@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_hmu31"]
 [ext_resource type="Texture2D" uid="uid://b8rha5yi8lfau" path="res://assets/textures/character/nathan/nathan_idle.png" id="1_temue"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_136vd"]
-radius = 23.0
-height = 100.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0bmq"]
+size = Vector2(40, 97)
 
 [node name="Enemy" type="Area2D"]
+z_index = 90
 script = ExtResource("1_hmu31")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,5 +15,7 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_temue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_136vd")
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_x0bmq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

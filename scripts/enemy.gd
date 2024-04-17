@@ -1,12 +1,41 @@
 extends Area2D
 class_name Enemy
 
+var viewport_size: Vector2
+var velocity = Vector2()
+var speed = 100
+var array: Array[int] = [1, -1]
+var dead = false
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	viewport_size = get_viewport_rect().size
+	velocity.x = array.pick_random()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _process(delta):
+	if !dead:
+		if global_position.x > viewport_size.x - getWidth():
+			velocity.x = -1
+		elif global_position.x < 0:
+			velocity.x = 1
+		position += velocity.normalized() * speed * delta
+	else: 
+		velocity.y = 5
+		position += velocity * speed * delta
+
+func _on_body_entered(body):
+	if !dead:
+		if body is Player:
+			if body.invincible == false:
+				body.velocity.y = 0
+				body.die()
+
+
+func getWidth():
+	return $CollisionShape2D.shape.extents.x * 2
+
+
+func die():
+	velocity.x = 0
+	dead = true
