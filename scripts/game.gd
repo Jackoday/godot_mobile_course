@@ -12,6 +12,7 @@ signal pause_game
 @onready var day_background = $ParallaxBackground/ParallaxLayer/Sprite2D
 @onready var night_background = $ParallaxBackground/ParallaxLayer/Sprite2D2
 @onready var stars_background = $ParallaxBackground/ParallaxLayer/Sprite2D3
+@onready var game_soundtrack = $GameSoundtrackPlayer
 
 @onready var hud = $UILayer/HUD
 
@@ -78,7 +79,7 @@ func _process(_delta):
 		hud.set_score(score)
 	
 	night_background.self_modulate = Color(1, 1, 1, float(score)/100000)
-	stars_background.self_modulate = Color(1, 1, 1, float(score)/200000)
+	stars_background.self_modulate = Color(1, 1, 1, float(score)/120000)
 
 
 func new_game():
@@ -104,6 +105,7 @@ func new_game():
 		level_generator.start_generation()
 		
 	hud.visible = true
+	game_soundtrack.play()
 
 
 func reset_game():
@@ -128,6 +130,7 @@ func _on_player_died():
 		save_score()
 	
 	player_died.emit(score, highscore)
+	game_soundtrack.stop()
 
 
 func save_score():
