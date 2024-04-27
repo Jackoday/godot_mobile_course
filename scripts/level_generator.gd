@@ -76,6 +76,7 @@ func add_event(platform):
 	odds = randi_range(1,100)
 	if event_odds > odds:
 		platform.vanish = true
+		platform.set_cloud()
 	
 	odds = randi_range(1,100)
 	if (float(event_odds)/2) > odds:

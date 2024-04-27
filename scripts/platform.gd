@@ -32,6 +32,11 @@ func increase_speed(platform_count: int):
 	if speed > 170:
 		speed = 170
 
+
+func set_cloud():
+	$Sprite2D.texture = load("res://assets/textures/platform/Platform_cloud.png")
+
+
 func _physics_process(delta):
 	if moving:
 		if global_position.x > viewport_size.x - getWidth():

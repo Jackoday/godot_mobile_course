@@ -1,21 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpnwjby8uejqs"]
 
 [ext_resource type="Script" path="res://scripts/boost_item.gd" id="1_vsn4d"]
-[ext_resource type="Texture2D" uid="uid://oc7lfojea2f3" path="res://assets/textures/items/beams.png" id="2_37p05"]
+[ext_resource type="Texture2D" uid="uid://byfef5d35hmlw" path="res://assets/textures/items/beans_small.png" id="2_i75o8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcb6p"]
-size = Vector2(36, 59)
+size = Vector2(36, 62)
 
 [node name="BoostItem" type="Area2D"]
 script = ExtResource("1_vsn4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.09, 0.09)
-texture = ExtResource("2_37p05")
+position = Vector2(-0.220001, 2.12273)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i75o8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 50
-position = Vector2(0, 9.5)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_rcb6p")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

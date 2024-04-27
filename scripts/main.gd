@@ -41,6 +41,7 @@ func _on_screens_start_game():
 
 func _on_screens_delete_level():
 	game_in_progress = false
+	game.reset_scene()
 	game.reset_game()
 
 

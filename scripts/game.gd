@@ -53,7 +53,8 @@ func _ready():
 	hud.set_score(0)
 	hud.pause_game.connect(_on_hud_pause_game)
 	
-	night_background.self_modulate = Color(1, 1, 1, 1000)
+	night_background.self_modulate = Color(1, 1, 1, 0)
+	stars_background.self_modulate = Color(1, 1, 1, 0)
 
 
 func get_parallax_sprite_scale(parallax_sprite: Sprite2D):
@@ -77,9 +78,13 @@ func _process(_delta):
 		if score < viewport_size.y - player.global_position.y:
 			score = int(viewport_size.y - player.global_position.y)
 		hud.set_score(score)
-	
-	night_background.self_modulate = Color(1, 1, 1, float(score)/100000)
-	stars_background.self_modulate = Color(1, 1, 1, float(score)/120000)
+		
+		night_background.self_modulate = Color(1, 1, 1, float(score)/75000)
+		if float(score)/75000 > 1:
+			night_background.self_modulate = Color(1, 1, 1, 1)
+		stars_background.self_modulate = Color(1, 1, 1, float(score)/90000)
+		if float(score)/90000 > 1:
+			stars_background.self_modulate = Color(1, 1, 1, 1)
 
 
 func new_game():
@@ -131,6 +136,11 @@ func _on_player_died():
 	
 	player_died.emit(score, highscore)
 	game_soundtrack.stop()
+
+func reset_scene():
+	game_soundtrack.stop()
+	night_background.self_modulate = Color(1, 1, 1, 0)
+	stars_background.self_modulate = Color(1, 1, 1, 0)
 
 
 func save_score():

@@ -138,7 +138,7 @@ text = "Charater Select"
 label_settings = SubResource("LabelSettings_eg8ii")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "animate_play_button"
 libraries = {
 "": SubResource("AnimationLibrary_inf3p")
 }
+autoplay = "animate_play_button"
