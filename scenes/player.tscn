@@ -1,14 +1,233 @@
-[gd_scene load_steps=18 format=3 uid="uid://cav7vtxq7o8wu"]
+[gd_scene load_steps=27 format=3 uid="uid://cav7vtxq7o8wu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_teiut"]
 [ext_resource type="Texture2D" uid="uid://cxwpo2ok0samx" path="res://assets/textures/character/carson/carson_idle.png" id="2_6du31"]
 [ext_resource type="Texture2D" uid="uid://cg4k70d1hs23d" path="res://assets/textures/character/carson/carson_hover1.png" id="2_rhs7q"]
+[ext_resource type="Texture2D" uid="uid://cl1ap5atabd3e" path="res://assets/textures/items/flame1.png" id="3_fcdnv"]
 [ext_resource type="Texture2D" uid="uid://bn46omlvgxtdw" path="res://assets/textures/character/carson/carson_jump.png" id="3_p0pw0"]
 [ext_resource type="Texture2D" uid="uid://byg8bnjk3jxib" path="res://assets/textures/character/carson/carson_hover2.png" id="3_tibby"]
+[ext_resource type="Texture2D" uid="uid://ddxo7kfcg2156" path="res://assets/textures/items/flame2.png" id="4_ixwhr"]
+[ext_resource type="Texture2D" uid="uid://d0etbbwq8vr4n" path="res://assets/textures/items/flame3.png" id="5_qh015"]
 [ext_resource type="Texture2D" uid="uid://b8pqual8nq1fl" path="res://assets/textures/character/nathan/nathan_hover2.png" id="6_8e1mw"]
 [ext_resource type="Texture2D" uid="uid://f8ae5c7vh828" path="res://assets/textures/character/nathan/nathan_hover1.png" id="7_86gfi"]
 [ext_resource type="Texture2D" uid="uid://w5ivgr3b18fv" path="res://assets/textures/character/nathan/nathan_jump.png" id="8_h2u7l"]
 [ext_resource type="PackedScene" uid="uid://b85x6cywfyfy8" path="res://scenes/swipe_detector.tscn" id="9_y5k1f"]
+[ext_resource type="Texture2D" uid="uid://bu3twnocaulhe" path="res://assets/textures/items/fart.png" id="10_tcayv"]
+
+[sub_resource type="Animation" id="Animation_22r1m"]
+resource_name = "fart"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnimation/FartSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_tcayv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectAnimation/FartSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.90735e-06, -11), Vector2(4.76837e-07, 13), Vector2(-9.53674e-07, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EffectAnimation/FartSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.0898649, 0.0898649), Vector2(0.197196, 0.197196), Vector2(0.261149, 0.261149)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EffectAnimation/FartSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ao2y8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnimation/FartSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_tcayv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectAnimation/FartSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.90735e-06, -11)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EffectAnimation/FartSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0898649, 0.0898649)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EffectAnimation/FartSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EffectAnimation/BoostSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EffectAnimation/BoostSprite:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_fcdnv")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EffectAnimation/BoostSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dnm17"]
+resource_name = "boost"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnimation/BoostSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectAnimation/BoostSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_fcdnv"), ExtResource("4_ixwhr"), ExtResource("5_qh015")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EffectAnimation/BoostSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lprkh"]
+resource_name = "clear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectAnimation/FartSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectAnimation/BoostSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbbvs"]
+_data = {
+"RESET": SubResource("Animation_ao2y8"),
+"boost": SubResource("Animation_dnm17"),
+"clear": SubResource("Animation_lprkh"),
+"fart": SubResource("Animation_22r1m")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iokj2"]
 size = Vector2(46, 25)
@@ -227,6 +446,24 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 z_index = 100
 script = ExtResource("1_teiut")
+
+[node name="EffectAnimation" type="Node2D" parent="."]
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="EffectAnimation"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_rbbvs")
+}
+
+[node name="FartSprite" type="Sprite2D" parent="EffectAnimation"]
+position = Vector2(1.90735e-06, -11)
+scale = Vector2(0.0898649, 0.0898649)
+texture = ExtResource("10_tcayv")
+
+[node name="BoostSprite" type="Sprite2D" parent="EffectAnimation"]
+position = Vector2(0, 13)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_fcdnv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -47)

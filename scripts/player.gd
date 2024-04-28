@@ -4,6 +4,7 @@ class_name Player
 signal died
 
 @onready var ap = $AnimationPlayer
+@onready var eap = $EffectAnimation/EffectAnimationPlayer
 @onready var jump_cshape = $JumpCollisionShape2D
 @onready var standard_cshape = $StandardCollisionShape2D
 @onready var sprite = $Sprite2D
@@ -35,6 +36,10 @@ var dead = false
 var fall_animation = "fall"
 var jump_animation = "jump"
 
+var fart_animation = "fart"
+var boost_animation = "boost"
+var clear_effect = "clear"
+
 
 func _ready():
 	viewport_size = get_viewport_rect().size
@@ -45,14 +50,20 @@ func _ready():
 		use_accelerometer = true
 	
 	swipe.connect("swiped", _shoot)
+	
+	eap.play(clear_effect)
 
 
 func _process(_delta):
 	if velocity.y > 0 and ap.current_animation != fall_animation:
 		ap.play(fall_animation)
+		eap.play(clear_effect)
 		invincible = false
 	elif velocity.y < 0 and ap.current_animation != jump_animation:
 		ap.play(jump_animation)
+	
+	if velocity.y > -500 and eap.current_animation == boost_animation:
+			eap.play(clear_effect)
 
 
 func _physics_process(_delta):
@@ -64,7 +75,6 @@ func _physics_process(_delta):
 		if use_accelerometer:
 			var mobile_input = Input.get_accelerometer()
 			velocity.x = mobile_input.x * accelerometer_speed
-			
 		else:
 			var direction = Input.get_axis("move_left", "move_right")
 			if direction:
@@ -85,6 +95,7 @@ func jump():
 	if !dead:
 		if boost_jumps > 0:
 			SoundFX.play("Fart")
+			eap.play(fart_animation)
 			velocity.y = boost_jump_velocity
 			boost_jumps -= 1
 		else:
@@ -108,8 +119,11 @@ func _shoot(direction: Vector2):
 
 
 func _on_ball_goal():
-	invincible = true
-	velocity.y = goal_boost_velocity
+	if !dead:
+		SoundFX.play("Boost")
+		invincible = true
+		eap.play(boost_animation)
+		velocity.y = goal_boost_velocity
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
