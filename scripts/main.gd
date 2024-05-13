@@ -35,6 +35,7 @@ func _process(_delta):
 
 
 func _on_screens_start_game():
+	GameUtility.add_log_msg("2")
 	game_in_progress = true
 	game.new_game()
 

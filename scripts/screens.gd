@@ -36,6 +36,7 @@ func _on_button_pressed(button):
 		"TitlePlayButton":
 			change_screen(null)
 			await(get_tree().create_timer(0.3).timeout)
+			GameUtility.add_log_msg("1")
 			start_game.emit()
 		"TitleCharacterSelect":
 			change_screen(character_screen)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dc8membhdg4uf"]
 
-[ext_resource type="Texture2D" uid="uid://ba32jsxna7bah" path="res://assets/textures/ui/ScoreBox.png" id="1_q3wc4"]
+[ext_resource type="Texture2D" uid="uid://cyf4c221wqwnp" path="res://assets/textures/ui/ScoreBox.png" id="1_q3wc4"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ripwq"]
-[ext_resource type="Texture2D" uid="uid://lkhk214sgv3j" path="res://assets/textures/ui/PauseBtn.png" id="2_xvjwu"]
+[ext_resource type="Texture2D" uid="uid://b6xaogadn1of0" path="res://assets/textures/ui/PauseBtn.png" id="2_xvjwu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uk5vm"]
 font_size = 29

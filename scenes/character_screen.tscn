@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cm32q7r50c1ph"]
 
 [ext_resource type="Script" path="res://scripts/base_screen.gd" id="1_r3rgo"]
-[ext_resource type="Texture2D" uid="uid://ddjx85dsuigpe" path="res://assets/textures/ui/Box01.png" id="2_og4gl"]
+[ext_resource type="Texture2D" uid="uid://bd3eh5hgfhb7b" path="res://assets/textures/ui/Box01.png" id="2_og4gl"]
 [ext_resource type="PackedScene" uid="uid://c7xvjsq02w8d" path="res://scenes/screen_button.tscn" id="3_4f20x"]
-[ext_resource type="Texture2D" uid="uid://c2lesp87ry3k6" path="res://assets/textures/ui/Closebtn2.png" id="4_hnpgp"]
-[ext_resource type="Texture2D" uid="uid://bvg7hwcxnxept" path="res://assets/textures/ui/Box04.png" id="5_81f0a"]
+[ext_resource type="Texture2D" uid="uid://bxmymo70bnqd0" path="res://assets/textures/ui/Closebtn2.png" id="4_hnpgp"]
+[ext_resource type="Texture2D" uid="uid://bm34opv6jfhx3" path="res://assets/textures/ui/Box04.png" id="5_81f0a"]
 [ext_resource type="Texture2D" uid="uid://cxwpo2ok0samx" path="res://assets/textures/character/carson/carson_idle.png" id="6_ir8km"]
 [ext_resource type="Texture2D" uid="uid://b8rha5yi8lfau" path="res://assets/textures/character/nathan/nathan_idle.png" id="7_vvqgw"]
 
@@ -82,6 +82,7 @@ offset_right = 236.5
 offset_bottom = 193.5
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Box/ScrollContainer"]
 layout_mode = 2

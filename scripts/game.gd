@@ -32,6 +32,9 @@ var save_file_path = "user://highscore.save"
 
 var selected_skin = 0
 
+var max_night: float = 1.0/75000.0
+var max_stars: float = 1.0/90000.0
+
 
 func _ready():
 	load_score()
@@ -79,15 +82,19 @@ func _process(_delta):
 			score = int(viewport_size.y - player.global_position.y)
 		hud.set_score(score)
 		
-		night_background.self_modulate = Color(1, 1, 1, float(score)/75000)
-		if float(score)/75000 > 1:
+		if (float(score) > 75000):
 			night_background.self_modulate = Color(1, 1, 1, 1)
-		stars_background.self_modulate = Color(1, 1, 1, float(score)/90000)
-		if float(score)/90000 > 1:
+		else:
+			night_background.self_modulate = Color(1, 1, 1, float(score)*max_night)
+		
+		if (float(score) > 90000):
 			stars_background.self_modulate = Color(1, 1, 1, 1)
+		else:
+			stars_background.self_modulate = Color(1, 1, 1, pow(float(score)*max_stars, 4))
 
 
 func new_game():
+	GameUtility.add_log_msg("3.1")
 	reset_game()
 	score = 0
 	
@@ -99,11 +106,13 @@ func new_game():
 	if selected_skin > 0:
 		player.use_skin(selected_skin)
 	
+	GameUtility.add_log_msg("3")
 	camera = camera_scene.instantiate()
 	camera.setup_camera(player)
 	add_child(camera)
 	
 	if (player):
+		GameUtility.add_log_msg("4")
 		level_generator.setup(player)
 		level_generator.generate_ground()
 		ground_sprite.visible = true
@@ -114,6 +123,7 @@ func new_game():
 
 
 func reset_game():
+	GameUtility.add_log_msg("3.2")
 	ground_sprite.visible = false
 	hud.visible = false
 	hud.set_score(0)
