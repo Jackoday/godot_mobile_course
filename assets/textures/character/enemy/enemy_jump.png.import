@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gi3lciy3e5ic"
-path="res://.godot/imported/fart.png-50522ca993ba0636aa0f8f6b8afb4aae.ctex"
+uid="uid://yfk6tcdokxoy"
+path="res://.godot/imported/enemy_jump.png-51c4e6f0bbc347de75c781b7008338f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/items/fart.png"
-dest_files=["res://.godot/imported/fart.png-50522ca993ba0636aa0f8f6b8afb4aae.ctex"]
+source_file="res://assets/textures/character/enemy/enemy_jump.png"
+dest_files=["res://.godot/imported/enemy_jump.png-51c4e6f0bbc347de75c781b7008338f4.ctex"]
 
 [params]
 

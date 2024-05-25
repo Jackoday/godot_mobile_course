@@ -13,6 +13,7 @@ signal pause_game
 @onready var night_background = $ParallaxBackground/ParallaxLayer/Sprite2D2
 @onready var stars_background = $ParallaxBackground/ParallaxLayer/Sprite2D3
 @onready var game_soundtrack = $GameSoundtrackPlayer
+@onready var game_soundtrack_jc = $GameSoundtrackPlayerJustCrowd
 
 @onready var hud = $UILayer/HUD
 
@@ -58,6 +59,7 @@ func _ready():
 	
 	night_background.self_modulate = Color(1, 1, 1, 0)
 	stars_background.self_modulate = Color(1, 1, 1, 0)
+	game_soundtrack_jc.play()
 
 
 func get_parallax_sprite_scale(parallax_sprite: Sprite2D):
@@ -94,9 +96,9 @@ func _process(_delta):
 
 
 func new_game():
-	GameUtility.add_log_msg("3.1")
 	reset_game()
 	score = 0
+	SoundFX.play("Whistle")
 	
 	player = player_scene.instantiate()
 	player.global_position = player_spawn_position
@@ -106,13 +108,11 @@ func new_game():
 	if selected_skin > 0:
 		player.use_skin(selected_skin)
 	
-	GameUtility.add_log_msg("3")
 	camera = camera_scene.instantiate()
 	camera.setup_camera(player)
 	add_child(camera)
 	
 	if (player):
-		GameUtility.add_log_msg("4")
 		level_generator.setup(player)
 		level_generator.generate_ground()
 		ground_sprite.visible = true
@@ -120,10 +120,10 @@ func new_game():
 		
 	hud.visible = true
 	game_soundtrack.play()
+	game_soundtrack_jc.stop()
 
 
 func reset_game():
-	GameUtility.add_log_msg("3.2")
 	ground_sprite.visible = false
 	hud.visible = false
 	hud.set_score(0)
@@ -146,9 +146,11 @@ func _on_player_died():
 	
 	player_died.emit(score, highscore)
 	game_soundtrack.stop()
+	game_soundtrack_jc.play()
 
 func reset_scene():
 	game_soundtrack.stop()
+	game_soundtrack_jc.play()
 	night_background.self_modulate = Color(1, 1, 1, 0)
 	stars_background.self_modulate = Color(1, 1, 1, 0)
 

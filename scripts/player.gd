@@ -104,11 +104,13 @@ func jump():
 
 
 func apply_boost_jumps():
+	SoundFX.play("Munch")
 	boost_jumps = 4
 
 
 func _shoot(direction: Vector2):
 	if !dead and shoot_timer.time_left == 0:
+		SoundFX.play("Kick")
 		shoot_timer.start()
 		projectile_start.rotation = direction.angle()
 		var ball = projectile.instantiate()
@@ -120,6 +122,7 @@ func _shoot(direction: Vector2):
 
 func _on_ball_goal():
 	if !dead:
+		SoundFX.play("Horn")
 		SoundFX.play("Boost")
 		invincible = true
 		eap.play(boost_animation)

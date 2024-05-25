@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://0lvdknijtdm6"
-path="res://.godot/imported/Boost.wav-c206f54b7c8166ac5d2dde29e3930afd.sample"
+uid="uid://dhyhg3h0kpy8i"
+path="res://.godot/imported/Horn.wav-1f815af6686c99b77bafb7cf115a16e9.sample"
 
 [deps]
 
-source_file="res://assets/sound/Boost.wav"
-dest_files=["res://.godot/imported/Boost.wav-c206f54b7c8166ac5d2dde29e3930afd.sample"]
+source_file="res://assets/sound/Horn.wav"
+dest_files=["res://.godot/imported/Horn.wav-1f815af6686c99b77bafb7cf115a16e9.sample"]
 
 [params]
 

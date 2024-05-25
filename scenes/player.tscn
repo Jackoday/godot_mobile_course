@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://f8ae5c7vh828" path="res://assets/textures/character/nathan/nathan_hover1.png" id="7_86gfi"]
 [ext_resource type="Texture2D" uid="uid://w5ivgr3b18fv" path="res://assets/textures/character/nathan/nathan_jump.png" id="8_h2u7l"]
 [ext_resource type="PackedScene" uid="uid://b85x6cywfyfy8" path="res://scenes/swipe_detector.tscn" id="9_y5k1f"]
-[ext_resource type="Texture2D" uid="uid://bu3twnocaulhe" path="res://assets/textures/items/fart.png" id="10_tcayv"]
+[ext_resource type="Texture2D" uid="uid://gi3lciy3e5ic" path="res://assets/textures/items/fart.png" id="10_tcayv"]
 
 [sub_resource type="Animation" id="Animation_ao2y8"]
 length = 0.001

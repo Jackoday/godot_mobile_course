@@ -1,11 +1,15 @@
 extends Area2D
 class_name Enemy
 
+@onready var ap = $AnimationPlayer
+
 var viewport_size: Vector2
 var velocity = Vector2()
 var speed = 100
 var array: Array[int] = [1, -1]
 var dead = false
+
+var fall_animation = "fall"
 
 
 func _ready():
@@ -20,7 +24,8 @@ func _process(delta):
 		elif global_position.x < 0:
 			velocity.x = 1
 		position += velocity.normalized() * speed * delta
-	else: 
+	else:
+		ap.play(fall_animation)
 		velocity.y = 5
 		position += velocity * speed * delta
 
@@ -37,5 +42,6 @@ func getWidth():
 
 
 func die():
+	SoundFX.play("Oof")
 	velocity.x = 0
 	dead = true

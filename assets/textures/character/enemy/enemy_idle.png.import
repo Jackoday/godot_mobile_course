@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0jhqy2vigh6v"
-path="res://.godot/imported/Welldone.png-077434a4cf862831cd55c4601b482e06.ctex"
+uid="uid://cu1x7bdedcowq"
+path="res://.godot/imported/enemy_idle.png-8eb5c5884bf195aacfa953c458ba07c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/Welldone.png"
-dest_files=["res://.godot/imported/Welldone.png-077434a4cf862831cd55c4601b482e06.ctex"]
+source_file="res://assets/textures/character/enemy/enemy_idle.png"
+dest_files=["res://.godot/imported/enemy_idle.png-8eb5c5884bf195aacfa953c458ba07c6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gi3lciy3e5ic"
-path="res://.godot/imported/fart.png-50522ca993ba0636aa0f8f6b8afb4aae.ctex"
+uid="uid://cbsnp1giw6k47"
+path="res://.godot/imported/highlight.png-b849e2e5ba28cd7d7cad8cdc2653cb11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/items/fart.png"
-dest_files=["res://.godot/imported/fart.png-50522ca993ba0636aa0f8f6b8afb4aae.ctex"]
+source_file="res://assets/textures/ui/highlight.png"
+dest_files=["res://.godot/imported/highlight.png-b849e2e5ba28cd7d7cad8cdc2653cb11.ctex"]
 
 [params]
 

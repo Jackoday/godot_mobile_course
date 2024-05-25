@@ -1,7 +1,7 @@
 extends Control
 
 const fade_duration = 0.3
-
+var selected_character = 0
 
 func _ready():
 	visible = false

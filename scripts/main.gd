@@ -16,7 +16,7 @@ func _ready():
 	game.pause_game.connect(_on_game_pause_game)
 	
 	#In App Purchase Signals
-	screens.purchase_skin.connect(_on_screens_purchase_skin)
+	screens.select_character.connect(_on_screens_select_character)
 
 
 func _on_window_event(event):
@@ -35,7 +35,6 @@ func _process(_delta):
 
 
 func _on_screens_start_game():
-	GameUtility.add_log_msg("2")
 	game_in_progress = true
 	game.new_game()
 
@@ -56,6 +55,5 @@ func _on_game_pause_game():
 	screens.pause_game()
 
 
-func _on_screens_purchase_skin():
-	if game.selected_skin != 1:
-		game.selected_skin = 1
+func _on_screens_select_character(selected_skin):
+	game.selected_skin = selected_skin

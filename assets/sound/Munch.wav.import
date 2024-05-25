@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://0lvdknijtdm6"
-path="res://.godot/imported/Boost.wav-c206f54b7c8166ac5d2dde29e3930afd.sample"
+uid="uid://ophoffiq6l41"
+path="res://.godot/imported/Munch.wav-3558aa4988d19c815e6d54ced6e3acb8.sample"
 
 [deps]
 
-source_file="res://assets/sound/Boost.wav"
-dest_files=["res://.godot/imported/Boost.wav-c206f54b7c8166ac5d2dde29e3930afd.sample"]
+source_file="res://assets/sound/Munch.wav"
+dest_files=["res://.godot/imported/Munch.wav-3558aa4988d19c815e6d54ced6e3acb8.sample"]
 
 [params]
 

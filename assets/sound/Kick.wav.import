@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://0lvdknijtdm6"
-path="res://.godot/imported/Boost.wav-c206f54b7c8166ac5d2dde29e3930afd.sample"
+uid="uid://bqwbstj5pxf0n"
+path="res://.godot/imported/Kick.wav-5ba3c5dc1e976948b1bcad7ed66fb7c1.sample"
 
 [deps]
 
-source_file="res://assets/sound/Boost.wav"
-dest_files=["res://.godot/imported/Boost.wav-c206f54b7c8166ac5d2dde29e3930afd.sample"]
+source_file="res://assets/sound/Kick.wav"
+dest_files=["res://.godot/imported/Kick.wav-5ba3c5dc1e976948b1bcad7ed66fb7c1.sample"]
 
 [params]
 

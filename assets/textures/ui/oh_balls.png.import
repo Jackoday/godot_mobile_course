@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gi3lciy3e5ic"
-path="res://.godot/imported/fart.png-50522ca993ba0636aa0f8f6b8afb4aae.ctex"
+uid="uid://5627uuaagb5e"
+path="res://.godot/imported/oh_balls.png-ca0c83f7c27dfbe96f3b761571a72597.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/items/fart.png"
-dest_files=["res://.godot/imported/fart.png-50522ca993ba0636aa0f8f6b8afb4aae.ctex"]
+source_file="res://assets/textures/ui/oh_balls.png"
+dest_files=["res://.godot/imported/oh_balls.png-ca0c83f7c27dfbe96f3b761571a72597.ctex"]
 
 [params]
 

@@ -7,7 +7,12 @@ var sounds = {
 	"Fall": load("res://assets/sound/Fall.wav"),
 	"Jump": load("res://assets/sound/Jump.wav"),
 	"Fart": load("res://assets/sound/Fart.wav"),
-	"Boost": load("res://assets/sound/boost.wav")
+	"Boost": load("res://assets/sound/Boost.wav"),
+	"Horn": load("res://assets/sound/Horn.wav"),
+	"Munch": load("res://assets/sound/Munch.wav"),
+	"Oof": load("res://assets/sound/Oof.wav"),
+	"Whistle": load("res://assets/sound/whistle.wav"),
+	"Kick": load("res://assets/sound/Kick.wav")
 }
 
 

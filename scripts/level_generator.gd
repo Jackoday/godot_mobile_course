@@ -34,7 +34,7 @@ func _ready():
 
 
 func start_generation():
-	gernerate_level(viewport_size.y - (y_distance_between_platforms * 2))
+	gernerate_level(viewport_size.y - (y_distance_between_platforms * 2) - 100) # -100 is for a gap at the start
 
 
 func _process(_delta):
@@ -80,19 +80,19 @@ func add_event(platform):
 	
 	odds = randi_range(1,100)
 	if (float(event_odds)/2) > odds:
-		var pick = randi_range(1,3)
-		match pick:
-			1:
-				create_enemy(platform.global_position)
-				GameUtility.add_log_msg("create_enemy")
-			2:
-				create_goal(platform.global_position)
-				platform.moving = false
-				GameUtility.add_log_msg("create_goal")
-			3:
-				create_boost(platform.get_global_position())
-				platform.moving = false
-				GameUtility.add_log_msg("create_boost")
+		var pick = randi_range(1,10)
+		if pick == 1:
+			create_goal(platform.global_position)
+			platform.moving = false
+			GameUtility.add_log_msg("create_goal")
+		elif range(2,4).has(pick):
+			create_boost(platform.global_position)
+			platform.moving = false
+			GameUtility.add_log_msg("create_boost")
+		else:
+			create_enemy(platform.global_position)
+			platform.moving = false
+			GameUtility.add_log_msg("create_enemy")
 
 
 func create_enemy(location: Vector2):
