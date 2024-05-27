@@ -13,6 +13,7 @@ signal pause_game
 @onready var night_background = $ParallaxBackground/ParallaxLayer/Sprite2D2
 @onready var stars_background = $ParallaxBackground/ParallaxLayer/Sprite2D3
 @onready var game_soundtrack = $GameSoundtrackPlayer
+@onready var game_soundtrack_whistle = $GameSoundtrackPlayerWhistle
 @onready var game_soundtrack_jc = $GameSoundtrackPlayerJustCrowd
 
 @onready var hud = $UILayer/HUD
@@ -35,6 +36,8 @@ var selected_skin = 0
 
 var max_night: float = 1.0/75000.0
 var max_stars: float = 1.0/90000.0
+
+var whistle_track = false
 
 
 func _ready():
@@ -93,6 +96,11 @@ func _process(_delta):
 			stars_background.self_modulate = Color(1, 1, 1, 1)
 		else:
 			stars_background.self_modulate = Color(1, 1, 1, pow(float(score)*max_stars, 4))
+		
+		if !whistle_track and score > 65000:
+			whistle_track = true
+			start_whistle_track()
+
 
 
 func new_game():
@@ -124,6 +132,9 @@ func new_game():
 
 
 func reset_game():
+	game_soundtrack_whistle.stop()
+	whistle_track = false
+	
 	ground_sprite.visible = false
 	hud.visible = false
 	hud.set_score(0)
@@ -146,10 +157,12 @@ func _on_player_died():
 	
 	player_died.emit(score, highscore)
 	game_soundtrack.stop()
+	game_soundtrack_whistle.stop()
 	game_soundtrack_jc.play()
 
 func reset_scene():
 	game_soundtrack.stop()
+	game_soundtrack_whistle.stop()
 	game_soundtrack_jc.play()
 	night_background.self_modulate = Color(1, 1, 1, 0)
 	stars_background.self_modulate = Color(1, 1, 1, 0)
@@ -172,3 +185,7 @@ func load_score():
 
 func _on_hud_pause_game():
 	pause_game.emit()
+
+func start_whistle_track():
+	var main_track_pos = game_soundtrack.get_playback_position()
+	game_soundtrack_whistle.play(main_track_pos)

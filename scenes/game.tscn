@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmmiacie8yc1t"]
+[gd_scene load_steps=13 format=3 uid="uid://dmmiacie8yc1t"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_nfjbl"]
 [ext_resource type="Texture2D" uid="uid://btv7j6q8sru15" path="res://assets/textures/bg/Ground.png" id="3_40iv3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://v4wddrbyyddo" path="res://assets/textures/bg/Layer3.png" id="6_2fahd"]
 [ext_resource type="PackedScene" uid="uid://dc8membhdg4uf" path="res://scenes/hud.tscn" id="7_jexcf"]
 [ext_resource type="AudioStream" uid="uid://cnvi5v0tn8rrw" path="res://assets/sound/Soundtracks/crowd_theme.wav" id="10_61nbq"]
+[ext_resource type="AudioStream" uid="uid://1lojmv5tmgb2" path="res://assets/sound/Soundtracks/whistle_track.wav" id="11_052jy"]
 [ext_resource type="AudioStream" uid="uid://usp6jcklwrpi" path="res://assets/sound/Soundtracks/crowd.wav" id="11_hbt8b"]
 
 [node name="Game" type="Node2D"]
@@ -72,6 +73,9 @@ offset = Vector2(0, -61)
 
 [node name="GameSoundtrackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_61nbq")
+
+[node name="GameSoundtrackPlayerWhistle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_052jy")
 
 [node name="GameSoundtrackPlayerJustCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_hbt8b")
