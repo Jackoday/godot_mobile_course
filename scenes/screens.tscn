@@ -59,7 +59,7 @@ offset_top = 14.0
 offset_right = 253.0
 offset_bottom = 40.0
 grow_horizontal = 2
-text = "Build 0.1.0"
+text = "Build 1.0.0"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Debug/ConsoleLog"]
 layout_mode = 1
@@ -83,7 +83,6 @@ layout_mode = 2
 autowrap_mode = 3
 
 [node name="ToggleConsole" type="TextureButton" parent="Debug"]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
